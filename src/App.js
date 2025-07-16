@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import { marked } from 'marked';
 import './App.css';
 
-// Set options for the marked library
-// This includes the 'gfm' (GitHub Flavored Markdown) and 'breaks' options
 marked.setOptions({
-  breaks: true, // Interprets carriage returns as <br> elements
+  breaks: true,
   gfm: true,
 });
 
-// Default markdown content that appears when the app loads
 const defaultMarkdown = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
@@ -68,9 +65,9 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App-container">
       <h1 className="app-title">Markdown Previewer</h1>
-      <div className="container">
+      <div className="panes-container">
         <div className="editor-container">
           <h2 className="header">Editor</h2>
           <textarea id="editor" value={markdown} onChange={handleChange}></textarea>
