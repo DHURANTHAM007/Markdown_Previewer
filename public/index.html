@@ -14,4 +14,23 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
-</html>
+</html>```
+
+---
+
+#### 3. Source Folder: `index.js` (The missing file)
+This is the **critical entry point** for your application. It imports React, your `App` component, and the main stylesheet, and then tells React where to render the app.
+
+**(Path: `/src/index.js`)**
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
