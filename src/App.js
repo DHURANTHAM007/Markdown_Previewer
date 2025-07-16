@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { marked } from 'marked';
-import './App.css';
 
+// Configure the 'marked' library
 marked.setOptions({
-  breaks: true,
-  gfm: true,
+  breaks: true, // Render carriage returns as <br>
+  gfm: true,    // Use GitHub Flavored Markdown
 });
 
+// Default content for the editor
 const defaultMarkdown = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
@@ -16,7 +17,6 @@ Here's some code, \`<div></div>\`, between 2 backticks.
 
 \`\`\`
 // this is multi-line code:
-
 function anotherExample(firstLine, lastLine) {
   if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
     return multiLineCode;
@@ -44,7 +44,6 @@ And here. | Okay. | I think we get it.
      - With different indentation levels.
         - That look like this.
 
-
 1. And there are numbered lists too.
 1. Use just 1s if you want!
 1. And last but not least, let's not forget embedded images:
@@ -59,21 +58,22 @@ function App() {
     setMarkdown(event.target.value);
   };
 
+  // Convert markdown to HTML and prepare it for rendering
   const getMarkdownText = () => {
     const rawMarkup = marked(markdown);
     return { __html: rawMarkup };
   };
 
   return (
-    <div className="App-container">
+    <div className="app-container">
       <h1 className="app-title">Markdown Previewer</h1>
       <div className="panes-container">
-        <div className="editor-container">
-          <h2 className="header">Editor</h2>
+        <div className="pane editor-pane">
+          <h2 className="pane-header">Editor</h2>
           <textarea id="editor" value={markdown} onChange={handleChange}></textarea>
         </div>
-        <div className="preview-container">
-          <h2 className="header">Preview</h2>
+        <div className="pane preview-pane">
+          <h2 className="pane-header">Preview</h2>
           <div id="preview" dangerouslySetInnerHTML={getMarkdownText()}></div>
         </div>
       </div>
