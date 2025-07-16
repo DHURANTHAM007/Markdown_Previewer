@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { marked } from 'marked';
+import './App.css'; // Correctly imports the component's stylesheet
 
 // Configure the 'marked' library
 marked.setOptions({
@@ -58,7 +59,6 @@ function App() {
     setMarkdown(event.target.value);
   };
 
-  // Convert markdown to HTML and prepare it for rendering
   const getMarkdownText = () => {
     const rawMarkup = marked(markdown);
     return { __html: rawMarkup };
